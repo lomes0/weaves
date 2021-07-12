@@ -1,0 +1,7 @@
+---
+- name: Hello
+  hosts: all
+  tasks:
+     - name: echo
+       command: "touch /home/jack/here"
+  user: jack       

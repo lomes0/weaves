@@ -1,0 +1,23 @@
+---
+- name: Site
+  hosts: dev
+  tasks:
+    - name: Update packages
+      apt:
+        update_cache: yes
+
+    - name: Get apache2
+      apt:
+        name: apache2
+        state: present
+
+    - name: Add index.html         
+      ansible.builtin.copy:
+        src: /tmp/index.html
+        dest: /var/www/html/index.html
+
+    - name: Start & Enable
+      ansible.builtin.service:
+        name: apache2
+        state: started
+        enabled: yes
